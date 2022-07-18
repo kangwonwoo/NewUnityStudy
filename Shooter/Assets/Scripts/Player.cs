@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     public bool[] joyControl;
     public bool isControl;
 
+    public ObjectManager objManager;
+
+    public int nScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,9 @@ public class Player : MonoBehaviour
         if(curBulletDelay < maxBulletDelay)
             return;
 
-        GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        //GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        GameObject bullet = objManager.MakeObject("PlayerBullet");
+        bullet.transform.position = transform.position;
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);  //  Impulse 질량에 대한 변화X
         
@@ -158,7 +164,7 @@ public class Player : MonoBehaviour
 
             if (life == 0)
             {
-                //  GameOver()
+                gManager.GameOver();
             }
             else
             {
@@ -166,7 +172,7 @@ public class Player : MonoBehaviour
                 gManager.RespawnPlayer();
             }
             gameObject.SetActive(false);
-            Destroy(col.gameObject);
+            col.gameObject.SetActive(false); //Destroy(col.gameObject);
         }
     }
 

@@ -18,6 +18,12 @@ public class Enemy : MonoBehaviour
     public GameObject goBullet;
     public GameObject goPlayer;
 
+    public ObjectManager objManager;
+
+    public string name;
+
+    public int nDmgPoint;
+
     // Start is called before the first frame update
     void Start()  //  Scene에 로드될 때
     {
@@ -40,12 +46,14 @@ public class Enemy : MonoBehaviour
         if (curBulletDelay < maxBulletDelay)
             return;
 
-        GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        //GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        GameObject createBullet = objManager.MakeObject("EnemyBullet");
+        createBullet.transform.position = transform.position;
         Rigidbody2D rd = createBullet.GetComponent<Rigidbody2D>();
 
         Vector3 dirVec = goPlayer.transform.position - transform.position;
 
-        rd.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+        rd.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
 
         curBulletDelay = 0.0f;
     }
@@ -64,14 +72,14 @@ public class Enemy : MonoBehaviour
     {
         if(col.gameObject.tag == "Border")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);  //Destroy(gameObject);
         }
         else if(col.gameObject.tag == "PlayerBullet")
         {
             Bullet bullet = col.gameObject.GetComponent<Bullet>();
             OnHit(bullet.power);
 
-            Destroy(col.gameObject);
+            gameObject.SetActive(false);  //Destroy(col.gameObject);
         }
     }
 
@@ -85,7 +93,15 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);  //Destroy(gameObject);
+
+            Player playerLogic = goPlayer.GetComponent<Player>();
+            playerLogic.nScore += nDmgPoint;
         }
+    }
+
+    private void OnEnable()
+    {
+        health = 1000;
     }
 }

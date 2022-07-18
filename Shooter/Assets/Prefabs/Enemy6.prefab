@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5042238167027388002}
   - component: {fileID: 5042238167027388003}
   m_Layer: 0
-  m_Name: Enemy5
+  m_Name: Enemy6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1751549604, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
+  m_Sprite: {fileID: -844523035, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.45833334}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,13 +151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e7a78f0936a274faf2666cfa88ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 4
+  speed: 2.5
+  health: 2
   sprites:
-  - {fileID: 1751549604, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
-  - {fileID: -565339938, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
+  - {fileID: -844523035, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
+  - {fileID: 2106109977, guid: d5a8e54a9cea08b449ae09990e8d64d3, type: 3}
   curBulletDelay: 0
   maxBulletDelay: 0.5
   goBullet: {fileID: 3040628450519796780, guid: 20f203432b9444b488879dff2208905d, type: 3}
   goPlayer: {fileID: 0}
-  nDmgPoint: 500
+  nDmgPoint: 100
