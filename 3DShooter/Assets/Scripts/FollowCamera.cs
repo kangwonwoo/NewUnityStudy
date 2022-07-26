@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FollowCamera : MonoBehaviour
+{
+    public Transform target;
+
+    public Vector3 offset;
+
+    private void LateUpdate()
+    {
+        transform.position = target.position + offset;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
